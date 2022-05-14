@@ -1,0 +1,262 @@
+{
+    "schemes": [
+        "http"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "title": "Swagger Example API",
+        "contact": {},
+        "version": "3.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/app",
+    "paths": {
+        "/addTicket": {
+            "post": {
+                "description": "insert a ticket",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ticket"
+                ],
+                "summary": "Create Ticket",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/ticket.inputTicket"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/ticket.messageResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/listTicket": {
+            "post": {
+                "description": "list a ticket",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ticket"
+                ],
+                "summary": "List Ticket",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/ticket.inputTicketList"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ticket.ticketListRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/up1ateTicket": {
+            "post": {
+                "description": "update a ticket",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ticket"
+                ],
+                "summary": "Update Ticket",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/ticket.inputTicketUpdate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/ticket.messageResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ticket.inputTicket": {
+            "type": "object",
+            "required": [
+                "title"
+            ],
+            "properties": {
+                "contact_information": {
+                    "type": "string",
+                    "example": "address......"
+                },
+                "description": {
+                    "type": "string",
+                    "example": "story of school magic"
+                },
+                "title": {
+                    "type": "string",
+                    "example": "Harry potter"
+                }
+            }
+        },
+        "ticket.inputTicketList": {
+            "type": "object",
+            "properties": {
+                "filter_create_date_from": {
+                    "type": "string"
+                },
+                "filter_create_date_to": {
+                    "type": "string"
+                },
+                "filter_title": {
+                    "type": "string"
+                },
+                "filter_update_date_from": {
+                    "type": "string"
+                },
+                "filter_update_date_to": {
+                    "type": "string"
+                },
+                "paging_index": {
+                    "type": "integer"
+                },
+                "paging_size": {
+                    "type": "integer"
+                },
+                "sort_by": {
+                    "type": "string"
+                },
+                "sort_type": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ticket.inputTicketUpdate": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "contact_information": {
+                    "type": "string",
+                    "example": "address2......"
+                },
+                "description": {
+                    "type": "string",
+                    "example": "bra2 bra2 bra2"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "status": {
+                    "type": "integer",
+                    "example": 2
+                },
+                "title": {
+                    "type": "string",
+                    "example": "Harry potter2"
+                }
+            }
+        },
+        "ticket.messageResponse": {
+            "type": "object",
+            "properties": {
+                "message_description": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer",
+                    "example": 201
+                }
+            }
+        },
+        "ticket.ticketCountRes": {
+            "type": "object",
+            "properties": {
+                "ticket_count": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ticket.ticketListRes": {
+            "type": "object",
+            "properties": {
+                "detail": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ticket.ticketRes"
+                    }
+                },
+                "header": {
+                    "$ref": "#/definitions/ticket.ticketCountRes"
+                }
+            }
+        },
+        "ticket.ticketRes": {
+            "type": "object",
+            "properties": {
+                "contact_information": {
+                    "type": "string"
+                },
+                "created_timestamp": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "sequence": {
+                    "type": "integer"
+                },
+                "status_name": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "update_timestamp": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

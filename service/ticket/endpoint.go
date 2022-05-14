@@ -14,6 +14,14 @@ func NewEndpoint() *Endpoint {
 	return &Endpoint{}
 }
 
+// @summary Create Ticket
+// @description insert a ticket
+// @tags ticket
+// @accept x-www-form-urlencoded
+// @produce json
+// @Param body body ticket.inputTicket false "body"
+// @response 201 {object} ticket.messageResponse
+// @router /addTicket [post]
 func (ep *Endpoint) AddTicket(c *gin.Context) { //POST /app/addTicket
 	defer c.Request.Body.Close()
 	log.Info("Ticket : AddTicket")
@@ -39,6 +47,14 @@ func (ep *Endpoint) AddTicket(c *gin.Context) { //POST /app/addTicket
 
 }
 
+// @summary Update Ticket
+// @description update a ticket
+// @tags ticket
+// @accept x-www-form-urlencoded
+// @produce json
+// @Param body body ticket.inputTicketUpdate false "body"
+// @response 201 {object} ticket.messageResponse
+// @router /up1ateTicket [post]
 func (ep *Endpoint) UpdateTicket(c *gin.Context) { //POST /app/addTicket
 	defer c.Request.Body.Close()
 	log.Info("Ticket : UpdateTicket")
@@ -65,6 +81,14 @@ func (ep *Endpoint) UpdateTicket(c *gin.Context) { //POST /app/addTicket
 	return
 }
 
+// @summary List Ticket
+// @description list a ticket
+// @tags ticket
+// @accept x-www-form-urlencoded
+// @produce json
+// @Param body body ticket.inputTicketList false "body"
+// @response 200 {object} ticket.ticketListRes
+// @router /listTicket [post]
 func (ep *Endpoint) TicketList(c *gin.Context) { //POST /app/ticketList
 	defer c.Request.Body.Close()
 	log.Info("Ticket : TicketList")

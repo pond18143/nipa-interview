@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func addNewTicket(tx *gorm.DB, request inputTicket) (err error) {
+func addNewTicket(tx *gorm.DB, request ticket) (err error) {
 	if tx == nil {
 		tx = mssql.DB
 	}
@@ -17,7 +17,7 @@ func addNewTicket(tx *gorm.DB, request inputTicket) (err error) {
 	return
 }
 
-func updateStatus(tx *gorm.DB, id int64, detail inputTicket) (err error) {
+func updateStatus(tx *gorm.DB, id int64, detail ticket) (err error) {
 	if tx == nil {
 		tx = mssql.DB
 	}
@@ -37,7 +37,7 @@ func updateStatus(tx *gorm.DB, id int64, detail inputTicket) (err error) {
 	return
 }
 
-func getTicketById(id int64) (detail inputTicket, err error) {
+func getTicketById(id int64) (detail ticket, err error) {
 	if err = mssql.DB.Select("*").
 		Table("ticket").
 		Where("id = ?", id).
@@ -56,8 +56,10 @@ func ticketListGet(request inputTicketList) (result ticketListRes, err error) {
 	switch request.SortBy {
 	case "title":
 		SortingBy = "t.title"
+	case "id":
+		SortingBy = "t.id"
 	case "created_timestamp":
-		SortingBy = "g.created_timestamp"
+		SortingBy = "t.created_timestamp"
 	case "update_timestamp":
 		SortingBy = "t.update_timestamp"
 	default:
@@ -100,9 +102,6 @@ func ticketListGet(request inputTicketList) (result ticketListRes, err error) {
 		txSubQuery = txSubQuery.Where("t.update_timestamp <= ? ", request.FilterUpdateDateTo)
 	}
 
-	if err = txMainQuery.Raw("SELECT COUNT (sub.title ) AS ticket_count FROM ? AS sub", txSubQuery.SubQuery()).Find(&result.Header).Error; err != nil {
-		return
-	}
 
 	txSubQuery = txSubQuery.Order(SortingBy)
 	//!zeroPagingIndex
@@ -125,12 +124,14 @@ func ticketListGet(request inputTicketList) (result ticketListRes, err error) {
 		txSubQuery = txSubQuery.Limit(100)
 	}
 
+	if err = txMainQuery.Raw("SELECT COUNT (sub.title ) AS ticket_count FROM ? AS sub", txSubQuery.SubQuery()).Find(&result.Header).Error; err != nil {
+		return
+	}
+
 	if err = txSubQuery.Find(&result.Detail).Error; err != nil {
 		return
 	}
 	return
-
-
 
 	return
 }

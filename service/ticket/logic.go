@@ -24,7 +24,7 @@ func addTicket(request inputTicket) (msg messageResponse, err error) {
 
 	timeStamp := time.Now()
 	//model inset ticket
-	var ticket = inputTicket{
+	var ticket = ticket{
 		Title:              request.Title,
 		Description:        request.Description,
 		ContactInformation: request.ContactInformation,
@@ -48,7 +48,7 @@ func addTicket(request inputTicket) (msg messageResponse, err error) {
 	log.Info("insert success")
 
 	msg = messageResponse{
-		Status:             http.StatusOK,
+		Status:             http.StatusCreated,
 		MessageDescription: "add ticket success ",
 	}
 	tx.Commit()
@@ -78,7 +78,7 @@ func updateStatusTicket(request inputTicketUpdate) (msg messageResponse, err err
 	}
 
 	// select ticket by id
-	var detail inputTicket
+	var detail ticket
 	detail, err = getTicketById(request.Id)
 	if err != nil || err == gorm.ErrRecordNotFound {
 		log.Errorf("getTicketById failed : [%+v] ", err.Error())
@@ -112,7 +112,7 @@ func updateStatusTicket(request inputTicketUpdate) (msg messageResponse, err err
 	}
 
 	timeStamp := time.Now()
-	var ticketUpdate = inputTicket{
+	var ticketUpdate = ticket{
 		Title:              request.Title,
 		Description:        request.Description,
 		ContactInformation: request.ContactInformation,
@@ -144,6 +144,8 @@ func updateStatusTicket(request inputTicketUpdate) (msg messageResponse, err err
 }
 
 func getTicketList(request inputTicketList) (result ticketListRes, msg messageResponse, err error) {
+
+	log.Info("ticketListGet...")
 	result, err = ticketListGet(request)
 	if err != nil {
 		log.Errorf("getTicketList failed : [%+v] ", err.Error())
@@ -154,5 +156,6 @@ func getTicketList(request inputTicketList) (result ticketListRes, msg messageRe
 			MessageDescription: "ticket not found"}
 		return
 	}
+	log.Info("list ticket success")
 	return result, msg, err
 }

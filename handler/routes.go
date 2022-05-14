@@ -5,6 +5,12 @@ import (
 	"net/http"
 	"nipa-interview/service/ping"
 	"nipa-interview/service/ticket"
+
+	_ "nipa-interview/docs"
+	swaggerFiles "github.com/swaggo/files"
+	"github.com/swaggo/gin-swagger"
+
+
 )
 
 type route struct {
@@ -68,6 +74,10 @@ func (r Routes) InitTransactionRoute() http.Handler {
 	}
 
 	ro := gin.New()
+
+	url := ginSwagger.URL("http://localhost:8080/swagger/doc.json") // The url pointing to API definition
+	// http://localhost:8080/swagger/index.html
+	ro.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler,url))
 
 	store := ro.Group("/test")
 	for _, e := range txPing {

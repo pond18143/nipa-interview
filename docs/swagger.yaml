@@ -1,0 +1,172 @@
+basePath: /app
+definitions:
+  ticket.inputTicket:
+    properties:
+      contact_information:
+        example: address......
+        type: string
+      description:
+        example: story of school magic
+        type: string
+      title:
+        example: Harry potter
+        type: string
+    required:
+    - title
+    type: object
+  ticket.inputTicketList:
+    properties:
+      filter_create_date_from:
+        type: string
+      filter_create_date_to:
+        type: string
+      filter_title:
+        type: string
+      filter_update_date_from:
+        type: string
+      filter_update_date_to:
+        type: string
+      paging_index:
+        type: integer
+      paging_size:
+        type: integer
+      sort_by:
+        type: string
+      sort_type:
+        type: integer
+      status:
+        type: integer
+    type: object
+  ticket.inputTicketUpdate:
+    properties:
+      contact_information:
+        example: address2......
+        type: string
+      description:
+        example: bra2 bra2 bra2
+        type: string
+      id:
+        example: 1
+        type: integer
+      status:
+        example: 2
+        type: integer
+      title:
+        example: Harry potter2
+        type: string
+    required:
+    - id
+    type: object
+  ticket.messageResponse:
+    properties:
+      message_description:
+        type: string
+      status:
+        example: 201
+        type: integer
+    type: object
+  ticket.ticketCountRes:
+    properties:
+      ticket_count:
+        type: integer
+    type: object
+  ticket.ticketListRes:
+    properties:
+      detail:
+        items:
+          $ref: '#/definitions/ticket.ticketRes'
+        type: array
+      header:
+        $ref: '#/definitions/ticket.ticketCountRes'
+    type: object
+  ticket.ticketRes:
+    properties:
+      contact_information:
+        type: string
+      created_timestamp:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      sequence:
+        type: integer
+      status_name:
+        type: string
+      title:
+        type: string
+      update_timestamp:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  title: Swagger Example API
+  version: "3.0"
+paths:
+  /addTicket:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: insert a ticket
+      parameters:
+      - description: body
+        in: body
+        name: body
+        schema:
+          $ref: '#/definitions/ticket.inputTicket'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/ticket.messageResponse'
+      summary: Create Ticket
+      tags:
+      - ticket
+  /listTicket:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: list a ticket
+      parameters:
+      - description: body
+        in: body
+        name: body
+        schema:
+          $ref: '#/definitions/ticket.inputTicketList'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ticket.ticketListRes'
+      summary: List Ticket
+      tags:
+      - ticket
+  /up1ateTicket:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: update a ticket
+      parameters:
+      - description: body
+        in: body
+        name: body
+        schema:
+          $ref: '#/definitions/ticket.inputTicketUpdate'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/ticket.messageResponse'
+      summary: Update Ticket
+      tags:
+      - ticket
+schemes:
+- http
+swagger: "2.0"

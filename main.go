@@ -13,6 +13,14 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+
+// @title Swagger Example API
+// @version 3.0
+
+// @host localhost:8080
+// @BasePath /app
+
+// @schemes http
 func main() {
 
 	port := flag.String("port", "8080", "port number")
@@ -21,6 +29,7 @@ func main() {
 	flag.Parse()
 	log.Infof("port : %+v", *port)
 	log.Infof("configPath directory : %+v", *configPath)
+	log.Infoln("http://localhost:8080/swagger/index.html")
 
 	//connect database
 	InitConnectionDatabase(*configPath)

@@ -15,11 +15,11 @@ const (
 )
 
 type messageResponse struct {
-	Status             int    `json:"status"`
+	Status             int    `json:"status" example:"201"`
 	MessageDescription string `json:"message_description"`
 }
 
-type inputTicket struct {
+type ticket struct {
 	Title              string       `json:"title"`
 	Description        string       `json:"description"`
 	ContactInformation string       `json:"contact_information"`
@@ -28,12 +28,18 @@ type inputTicket struct {
 	UpdateTimestamp    time.Time    `json:"update_timestamp"`
 }
 
+type inputTicket struct {
+	Title              string `json:"title" binding:"required" example:"Harry potter" `
+	Description        string `json:"description" example:"story of school magic"`
+	ContactInformation string `json:"contact_information" example:"address......"`
+}
+
 type inputTicketUpdate struct {
-	Id                 int64        `json:"id"`
-	Title              string       `json:"title"`
-	Description        string       `json:"description"`
-	ContactInformation string       `json:"contact_information"`
-	Status             StatusTicket `json:"status"`
+	Id                 int64        `json:"id" binding:"required" example:"1" `
+	Title              string       `json:"title" example:"Harry potter2"`
+	Description        string       `json:"description" example:"bra2 bra2 bra2"`
+	ContactInformation string       `json:"contact_information" example:"address2......"`
+	Status             StatusTicket `json:"status" example:"2"`
 }
 
 type inputTicketList struct {
