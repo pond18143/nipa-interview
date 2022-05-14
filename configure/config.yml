@@ -4,4 +4,4 @@ mssql :
   port            : 1433
   user            : "SA"
   password        : "P@ssw0rd"
-  database        : "master"
+  database        : "nipa"
