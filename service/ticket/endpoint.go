@@ -54,7 +54,7 @@ func (ep *Endpoint) AddTicket(c *gin.Context) { //POST /app/addTicket
 // @produce json
 // @Param body body ticket.inputTicketUpdate false "body"
 // @response 201 {object} ticket.messageResponse
-// @router /up1ateTicket [post]
+// @router /updateTicket [post]
 func (ep *Endpoint) UpdateTicket(c *gin.Context) { //POST /app/addTicket
 	defer c.Request.Body.Close()
 	log.Info("Ticket : UpdateTicket")

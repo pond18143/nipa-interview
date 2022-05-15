@@ -82,7 +82,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/up1ateTicket": {
+        "/updateTicket": {
             "post": {
                 "description": "update a ticket",
                 "consumes": [
@@ -119,9 +119,6 @@ const docTemplate = `{
     "definitions": {
         "ticket.inputTicket": {
             "type": "object",
-            "required": [
-                "title"
-            ],
             "properties": {
                 "contact_information": {
                     "type": "string",
@@ -141,42 +138,53 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "filter_create_date_from": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2018-01-11T01:02:18.070Z"
                 },
                 "filter_create_date_to": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2023-01-11T01:02:18.070Z"
                 },
                 "filter_title": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Harryporter4"
                 },
                 "filter_update_date_from": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2018-01-11T01:02:18.070Z"
                 },
                 "filter_update_date_to": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2023-01-11T01:02:18.070Z"
                 },
                 "paging_index": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 1
                 },
                 "paging_size": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 10
                 },
                 "sort_by": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "id"
                 },
                 "sort_type": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 1
                 },
                 "status": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 1
                 }
             }
         },
         "ticket.inputTicketUpdate": {
             "type": "object",
-            "required": [
-                "id"
-            ],
             "properties": {
                 "contact_information": {
                     "type": "string",

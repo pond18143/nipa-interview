@@ -102,6 +102,9 @@ func ticketListGet(request inputTicketList) (result ticketListRes, err error) {
 		txSubQuery = txSubQuery.Where("t.update_timestamp <= ? ", request.FilterUpdateDateTo)
 	}
 
+	if err = txMainQuery.Raw("SELECT COUNT (sub.title ) AS ticket_count FROM ? AS sub", txSubQuery.SubQuery()).Find(&result.Header).Error; err != nil {
+		return
+	}
 
 	txSubQuery = txSubQuery.Order(SortingBy)
 	//!zeroPagingIndex
@@ -122,10 +125,6 @@ func ticketListGet(request inputTicketList) (result ticketListRes, err error) {
 	//defaultPagingSize Size10
 	if request.PagingSize == 0 {
 		txSubQuery = txSubQuery.Limit(100)
-	}
-
-	if err = txMainQuery.Raw("SELECT COUNT (sub.title ) AS ticket_count FROM ? AS sub", txSubQuery.SubQuery()).Find(&result.Header).Error; err != nil {
-		return
 	}
 
 	if err = txSubQuery.Find(&result.Detail).Error; err != nil {

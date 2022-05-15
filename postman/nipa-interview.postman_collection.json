@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "d9d94fe4-9c55-423b-8d40-49bf0991f72b",
+		"name": "nipa-interview",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/app/addTicket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"Harryporter4\",\n    \"description\":\"movies is the best\",\n    \"contact_information\":\"0944234991\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/app/addTicket",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"app",
+						"addTicket"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/app/updateTicket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 7,\n    \"title\": \"Harryporter\",\n    \"description\": \"bra bra\",\n    \"contact_information\":\"bra....2\",\n    \"status\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/app/updateTicket",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"app",
+						"updateTicket"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/app/listTicket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": 1,\n    \"filter_title\": \"\",\n    \"sort_by\": \"id\",\n    \"sort_type\": 1,\n    \"filter_create_date_from\": \"2019-01-11T01:02:18.070Z\",\n    \"filter_create_date_to\": \"2021-01-11T01:02:18.070Z\",\n    \"filter_update_date_from\": \"2018-01-11T01:02:18.070Z\",\n    \"filter_update_date_to\": \"2023-01-11T01:02:18.070Z\",\n    \"paging_index\": 0,\n    \"paging_size\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/app/listTicket",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"app",
+						"listTicket"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

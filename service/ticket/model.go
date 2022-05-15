@@ -29,13 +29,13 @@ type ticket struct {
 }
 
 type inputTicket struct {
-	Title              string `json:"title" binding:"required" example:"Harry potter" `
+	Title              string `json:"title" example:"Harry potter" `
 	Description        string `json:"description" example:"story of school magic"`
 	ContactInformation string `json:"contact_information" example:"address......"`
 }
 
 type inputTicketUpdate struct {
-	Id                 int64        `json:"id" binding:"required" example:"1" `
+	Id                 int64        `json:"id" example:"1"`
 	Title              string       `json:"title" example:"Harry potter2"`
 	Description        string       `json:"description" example:"bra2 bra2 bra2"`
 	ContactInformation string       `json:"contact_information" example:"address2......"`
@@ -43,16 +43,16 @@ type inputTicketUpdate struct {
 }
 
 type inputTicketList struct {
-	Status               StatusTicket `json:"status"`
-	FilterTitle          string       `json:"filter_title"`
-	FilterCreateDateFrom time.Time    `json:"filter_create_date_from"`
-	FilterCreateDateTo   time.Time    `json:"filter_create_date_to"`
-	FilterUpdateDateFrom time.Time    `json:"filter_update_date_from"`
-	FilterUpdateDateTo   time.Time    `json:"filter_update_date_to"`
-	SortBy               string       `json:"sort_by"`
-	SortType             int64        `json:"sort_type"`
-	PagingIndex          int64        `json:"paging_index"`
-	PagingSize           int64        `json:"paging_size"`
+	Status               StatusTicket `json:"status" example:"1"`
+	FilterTitle          string       `json:"filter_title" example:"Harryporter4"`
+	FilterCreateDateFrom time.Time    `json:"filter_create_date_from" example:"2018-01-11T01:02:18.070Z" format:"date-time"`
+	FilterCreateDateTo   time.Time    `json:"filter_create_date_to" example:"2023-01-11T01:02:18.070Z" format:"date-time"`
+	FilterUpdateDateFrom time.Time    `json:"filter_update_date_from" example:"2018-01-11T01:02:18.070Z" format:"date-time"`
+	FilterUpdateDateTo   time.Time    `json:"filter_update_date_to" example:"2023-01-11T01:02:18.070Z" format:"date-time"`
+	SortBy               string       `json:"sort_by" example:"id"`
+	SortType             int64        `json:"sort_type" example:"1"`
+	PagingIndex          int64        `json:"paging_index" example:"1"`
+	PagingSize           int64        `json:"paging_size" example:"10"`
 }
 
 type ticketCountRes struct {
@@ -74,3 +74,4 @@ type ticketRes struct {
 	CreatedTimestamp   time.Time `json:"created_timestamp"`
 	UpdateTimestamp    time.Time `json:"update_timestamp"`
 }
+

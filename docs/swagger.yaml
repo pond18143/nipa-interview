@@ -11,30 +11,42 @@ definitions:
       title:
         example: Harry potter
         type: string
-    required:
-    - title
     type: object
   ticket.inputTicketList:
     properties:
       filter_create_date_from:
+        example: "2018-01-11T01:02:18.070Z"
+        format: date-time
         type: string
       filter_create_date_to:
+        example: "2023-01-11T01:02:18.070Z"
+        format: date-time
         type: string
       filter_title:
+        example: Harryporter4
         type: string
       filter_update_date_from:
+        example: "2018-01-11T01:02:18.070Z"
+        format: date-time
         type: string
       filter_update_date_to:
+        example: "2023-01-11T01:02:18.070Z"
+        format: date-time
         type: string
       paging_index:
+        example: 1
         type: integer
       paging_size:
+        example: 10
         type: integer
       sort_by:
+        example: id
         type: string
       sort_type:
+        example: 1
         type: integer
       status:
+        example: 1
         type: integer
     type: object
   ticket.inputTicketUpdate:
@@ -54,8 +66,6 @@ definitions:
       title:
         example: Harry potter2
         type: string
-    required:
-    - id
     type: object
   ticket.messageResponse:
     properties:
@@ -146,7 +156,7 @@ paths:
       summary: List Ticket
       tags:
       - ticket
-  /up1ateTicket:
+  /updateTicket:
     post:
       consumes:
       - application/x-www-form-urlencoded
