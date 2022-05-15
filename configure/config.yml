@@ -1,7 +1,0 @@
-mssql :
-  databaseType    : "mssql"
-  server          : "68.183.182.37"
-  port            : 1433
-  user            : "SA"
-  password        : "P@ssw0rd"
-  database        : "nipa"
