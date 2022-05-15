@@ -89,7 +89,7 @@ func (ep *Endpoint) UpdateTicket(c *gin.Context) { //POST /app/addTicket
 // @Param body body ticket.inputTicketList false "body"
 // @response 200 {object} ticket.ticketListRes
 // @router /listTicket [post]
-func (ep *Endpoint) TicketList(c *gin.Context) { //POST /app/ticketList
+func (ep *Endpoint) TicketList(c *gin.Context) { //POST /app/listTicket
 	defer c.Request.Body.Close()
 	log.Info("Ticket : TicketList")
 	var request inputTicketList

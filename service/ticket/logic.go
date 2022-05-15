@@ -91,17 +91,17 @@ func updateStatusTicket(request inputTicketUpdate) (msg messageResponse, err err
 	}
 	log.Debugf("Detail : [%+v]", detail)
 
-	// if title == ""
+	// title == ""
 	if request.Title == "" {
 		request.Title = detail.Title
 	}
 
-	//if description == ""
+	// description == ""
 	if request.Description == "" {
 		request.Description = detail.Description
 	}
 
-	//if contact == ""
+	// contact == ""
 	if request.ContactInformation == "" {
 		request.ContactInformation = detail.ContactInformation
 	}
