@@ -18,12 +18,12 @@
   - ใส่ค่า ใน config.yaml
   ```
   mssql :
-  databaseType    : "<mssql>"
-  server          : "<server ip>"
-  port            : <port>
-  user            : "<user>"
-  password        : "<password>"
-  database        : "<database name>"
+    databaseType    : "<mssql>"
+    server          : "<server ip>"
+    port            : <port>
+    user            : "<user>"
+    password        : "<password>"
+    database        : "<database name>"
   ```
 # วิธี run
   ```
