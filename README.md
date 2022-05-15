@@ -18,7 +18,7 @@
   - ใส่ค่า ใน config.yaml
   ```
   mssql :
-    databaseType    : "<mssql>"
+    databaseType    : "mssql"
     server          : "<server ip>"
     port            : <port>
     user            : "<user>"
