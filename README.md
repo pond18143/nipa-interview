@@ -13,9 +13,9 @@
   cd nipa-interview&&mkdir configure
   ```
   ```
-  touch config.yaml
+  cd configure&&touch config.yaml
   ```
-  - ใส่ค่า ใน config.yaml
+  - ใส่ค่า ใน configure/config.yaml
   ```
   mssql :
     databaseType    : "mssql"
